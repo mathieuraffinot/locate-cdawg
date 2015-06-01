@@ -1,6 +1,6 @@
 
 
-Locate-cdawg: replacing sampling by CDAWG localisation. 
+Locate-cdawg: replacing sampling by CDAWG localisation in BWT indexing approaches.  
 
 ===============
 Main author: Mathieu Raffinot (m_raffinot@yahoo.com)
@@ -27,29 +27,28 @@ Composite repetition-aware data structures. CoRR abs/1502.05937 (2015)]
 ### Brief description
 
 
-
 The CDAWG  data structure (see REF1) is a compact automaton built on an
 input text and which permits fast pattern localisation. However, coded
 directly, the multicharacter transitions requires a huge memory space
-which makes it unpractical in practice. The idea of paper REF2 is to
+which makes it unpractical in practice. One idea of paper REF2 is to
 only keep of the CDAWG the structure that allows to find the positions
 of a given pattern ** KNOWING ** that the pattern is in the text. This is
 garantied by using a BWT first. From the CDAWG, it only remains to code
-each first character of each transition, which now permits to encore
+each first character of each transition, which now permits to encode
 the structure in a relatively small amount of space. The localisation
 is done very efficiently in worst time O(M+NOCC), where M is the size
 of the pattern and NOCC the number of occurrences in the text.
  
-Two CDAWG [lite] encoding are proposed: 
+Two CDAWG [lite] encodings are proposed: 
 * a "simple" BYTE coding
 [.cdawg-comp file], which is bigger than the next one, but allows
-faster localisations 
+faster localisations; 
 * a more complex succint coding [.cdawg-succ,
 .cdawg-scc, .cdawg-ps files] which total sizes are smaller than the
-first one, but which localisation remains very fast
+first one, but which localisation remains very fast.
 
 The search code requires that RCLCSA files (for the BWT) have been
-built on the origibal file and are in the same directory.
+built on the original file and are in the same directory.
 
 
 The RLCSA is based on the following libraries: RLCSA
